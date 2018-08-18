@@ -23,7 +23,21 @@ router.get('/register', function(req, res, next) {
 
 // POST /register
 router.post('/register', function(req, res, next) {
-  return res.render('register');
+  if (req.body.name &&
+  req.body.email &&
+  req.body.personality &&
+  req.body.password &&
+  req.body.confirmPassword ) {
+    if (req.body.password !== req.body.confirmPassword) {
+      var err = new Error("Passwords don't Match");
+      err.status = 400;
+      return next(err);
+    }
+  } else {
+    var err = new Error('All Fields Required');
+    err.status = 400;
+    return next(err);
+  }
 });
 
 module.exports = router;

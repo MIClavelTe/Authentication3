@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var app = express();
+var user = require('./models/users');
 
 mongoose.connect('mongodb://localhost:27017/MongoTest2');
 var db = mongoose.connection;

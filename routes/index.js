@@ -24,7 +24,7 @@ router.post('/register', function(req, res, next) {
       var userData = {
         email: req.body.email,
         name: req.body.name,
-        favoriteBook: req.body.favoriteBook,
+        personality: req.body.personality,
         password: req.body.password
       };
 

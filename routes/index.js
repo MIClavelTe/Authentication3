@@ -18,12 +18,12 @@ router.get('/contact', function(req, res, next) {
 
 // GET /register
 router.get('/register', function(req, res, next) {
-  return res.send('Register Today');
+  return res.render('register');
 });
 
 // POST /register
 router.post('/register', function(req, res, next) {
-  return res.send('Thank you');
+  return res.render('register');
 });
 
 module.exports = router;

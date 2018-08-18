@@ -34,7 +34,7 @@ app.use(function(err, req, res, next) {
   });
 });
 
-// listen on port 3000
-app.listen(3000, function () {
-  console.log('Express app listening on port 3000');
+// listen on port 6500
+app.listen(6500, function () {
+  console.log('Running on localhost:6500');
 });

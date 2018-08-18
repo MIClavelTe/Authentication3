@@ -1,26 +1,26 @@
 var mongoose = require('mongoose');
-var userSchema = new mongoose.Schema({
-   name: {
-       type: String,
-       required: true,
-       trim: true
-   },   
-   email: {
-        type: String,
-        unique: true,
-        required: true,
-        trim: true
-    },  
-    personality: {
-        type: String,
-        required: true,
-        trim: true
+var UserSchema = new mongoose.Schema({
+    email: {
+      type: String,
+      unique: true,
+      required: true,
+      trim: true
+    },
+    name: {
+      type: String,
+      required: true,
+      trim: true
+    },
+    favoriteBook: {
+      type: String,
+      required: true,
+      trim: true
     },
     password: {
-        type: String,
-        required: true,
-    },   
+      type: String,
+      required: true
+    }
 });
 
-var user = mongoose.model('User', userSchema);
-module.exports = user;
+var User = mongoose.model('User', UserSchema);
+module.exports = User;

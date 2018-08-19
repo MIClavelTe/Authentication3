@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var session = require('express-session');
 var app = express();
 var user = require('./models/users');
 
@@ -8,6 +9,12 @@ mongoose.connect('mongodb://localhost:27017/MongoTest2');
 var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'Connection ERROR:'));
+
+app.use(session({
+  secret: 'treehouse loves you',
+  resave: true,
+  saveUninitialized: false
+}));
 
 // parse incoming requests
 app.use(bodyParser.json());

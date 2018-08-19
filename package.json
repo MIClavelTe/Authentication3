@@ -1,7 +1,7 @@
 {
-  "name": "authentication_1",
+  "name": "authentication_2",
   "version": "1.0.0",
-  "description": "User Registration",
+  "description": "Sessions and Cookies",
   "author": "Maria",
   "private": true,
   "scripts": {

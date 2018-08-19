@@ -14,7 +14,7 @@ router.post('/register', function(req, res, next) {
     req.body.personality &&
     req.body.password &&
     req.body.confirmPassword) {
-      
+
       if (req.body.password !== req.body.confirmPassword) {
         var err = new Error('Passwords do not match.');
         err.status = 400;
@@ -44,6 +44,14 @@ router.post('/register', function(req, res, next) {
       return next(err);
     }
 })
+
+router.get('/login', function(req, res, next) {
+  return res.render('login', { title: 'Log In' });
+});
+
+router.post('/login', function(req, res, next) {
+  return res.send('Logged In');
+});
 
 router.get('/', function(req, res, next) {
   return res.render('index', { title: 'Home' });

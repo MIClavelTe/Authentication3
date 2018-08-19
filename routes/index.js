@@ -14,7 +14,7 @@ router.post('/register', function(req, res, next) {
     req.body.personality &&
     req.body.password &&
     req.body.confirmPassword) {
-
+      
       if (req.body.password !== req.body.confirmPassword) {
         var err = new Error('Passwords do not match.');
         err.status = 400;
@@ -30,7 +30,9 @@ router.post('/register', function(req, res, next) {
 
       User.create(userData, function (error, user) {
         if (error) {
-          return next(error);
+          var err = new Error('Email is in Use');
+          err.status = 400;
+          return next(err);
         } else {
           return res.redirect('/profile');
         }

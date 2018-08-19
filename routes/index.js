@@ -50,7 +50,13 @@ router.get('/login', function(req, res, next) {
 });
 
 router.post('/login', function(req, res, next) {
-  return res.send('Logged In');
+  if (req.body.email && req.body.password) {
+    res.send('Logged In!');
+  } else {
+      var err = new Error('Email and Password Required');
+      err.status = 400;
+      next(err);
+  }
 });
 
 router.get('/', function(req, res, next) {

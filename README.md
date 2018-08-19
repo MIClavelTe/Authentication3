@@ -1,2 +1,2 @@
-# User Authentication With Express and Mongo
-User Registration
+# *User Authentication With Express and Mongo*
+Sessions and Cookies

@@ -34,6 +34,7 @@ router.post('/register', function(req, res, next) {
           err.status = 400;
           return next(err);
         } else {
+          req.session.userId = user._id;
           return res.redirect('/profile');
         }
       });
@@ -51,7 +52,16 @@ router.get('/login', function(req, res, next) {
 
 router.post('/login', function(req, res, next) {
   if (req.body.email && req.body.password) {
-    res.send('Logged In!');
+    User.authenticate(req.body.email, req.body.password, function(error, user) {
+      if (error || !user) {
+        var err = new Error('Wrong Email or Password');
+        err.status = 401;
+        return next(err);
+      } else {
+        req.session.userId = user._id;
+        return res.redirect('/profile');
+      }
+    });
   } else {
       var err = new Error('Email and Password Required');
       err.status = 400;

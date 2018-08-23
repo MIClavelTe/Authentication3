@@ -69,6 +69,22 @@ router.post('/login', function(req, res, next) {
   }
 });
 
+router.get('/profile', function(req, res, next) {
+  if (!req.session.userId) {
+    var err = new Error('Not Authorized');
+    err.status = 403;
+    return next(err);
+  }
+  User.findById(req.session.userId)
+    .exec(function(error, user) {
+      if (error) {
+        return next(err);
+      } else {
+        return res.render('profile', { title: 'Profile', name: user.name, bio: user.bio });
+      }
+    })
+});
+
 router.get('/', function(req, res, next) {
   return res.render('index', { title: 'Home' });
 });

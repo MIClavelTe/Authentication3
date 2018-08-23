@@ -11,7 +11,7 @@ router.get('/register', function(req, res, next) {
 router.post('/register', function(req, res, next) {
   if (req.body.email &&
     req.body.name &&
-    req.body.personality &&
+    req.body.bio &&
     req.body.password &&
     req.body.confirmPassword) {
 
@@ -24,7 +24,7 @@ router.post('/register', function(req, res, next) {
       var userData = {
         email: req.body.email,
         name: req.body.name,
-        personality: req.body.personality,
+        bio: req.body.bio,
         password: req.body.password
       };
 

@@ -13,7 +13,7 @@ var UserSchema = new mongoose.Schema({
       required: true,
       trim: true
     },
-    personality: {
+    bio: {
       type: String,
       required: true,
       trim: true

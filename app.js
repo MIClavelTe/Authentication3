@@ -27,6 +27,11 @@ app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/views');
 
+app.use(function(req, res, next) {
+  res.locals.currentUser = req.session.userId;
+  next();
+});
+
 // include routes
 var routes = require('./routes/index');
 app.use('/', routes);
@@ -36,11 +41,6 @@ app.use(function(req, res, next) {
   var err = new Error('File Not Found');
   err.status = 404;
   next(err);
-});
-
-app.use(function(req, res, next) {
-  res.locals.currentUser = req.session.userId;
-  next();
 });
 
 // error handler

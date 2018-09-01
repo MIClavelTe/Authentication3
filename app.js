@@ -38,6 +38,11 @@ app.use(function(req, res, next) {
   next(err);
 });
 
+app.use(function(req, res, next) {
+  res.locals.currentUser = req.session.userId;
+  next();
+});
+
 // error handler
 // define as the last app.use callback
 app.use(function(err, req, res, next) {

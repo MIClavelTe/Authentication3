@@ -82,12 +82,7 @@ router.get('/logout', function(req, res, next) {
   }
 });
 
-router.get('/profile', function(req, res, next) {
-  if (!req.session.userId) {
-    var err = new Error('Not Authorized');
-    err.status = 403;
-    return next(err);
-  }
+router.get('/profile', mid.requireLogin, function(req, res, next) {
   User.findById(req.session.userId)
     .exec(function(error, user) {
       if (error) {
